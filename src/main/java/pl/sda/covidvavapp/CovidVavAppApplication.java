@@ -7,6 +7,7 @@ import pl.sda.covidvavapp.config.VaccinationTypeConfig;
 
 @SpringBootApplication
 @EnableConfigurationProperties(value = {VaccinationTypeConfig.class})
+
 public class CovidVavAppApplication {
 
     public static void main(String[] args) {

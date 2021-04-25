@@ -9,6 +9,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Patient {
     private Long id;
     private String firstName;

@@ -28,6 +28,7 @@
                 <td>Imię</td>
                 <td>Nazwisko</td>
                 <td>PESEL</td>
+                <td>Data zaplanovanej szczepionki</td>
             </tr>
         </thead>
         <tbody>
@@ -36,8 +37,25 @@
                 <td><span th:text="${patient.firstName}"></span></td>
                 <td><span th:text="${patient.lastName}"></span></td>
                 <td><span th:text="${patient.pesel}"></span></td>
+                <td>
+                    <span th:each="plannedVac : *{patient.plannedVacs}">
+                        <table>
+                            <td><input th:text="*{plannedVac.date}" /></td>-->
+<!--                            <td><input th:text="*{plannedVac.address}" /></td>-->
+<!--                            <td><input th:text="*{plannedVac.vacType}" /></td>-->
+                        </table>
+                    </span>
+                </td>
             </tr>
         </tbody>
     </table>
+
+    <input type="button" value="Home" onclick="goHome()">
+    <script>
+        function goHome() {
+            window.location.assign("http://localhost:8080/")
+        }
+    </script>
+
 </body>
 </html>

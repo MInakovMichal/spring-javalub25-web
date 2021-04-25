@@ -29,6 +29,14 @@ Dodaj szczepienie <br>
     </select><br>
 
     <input type="submit" value="Zapisz"/>
+    <input type="reset">
+    <input type="button" value="Home" onclick="goHome()">
+
 </form>
-</body>
+
+<script>
+    function goHome() {
+        window.location.assign("http://localhost:8080/")
+    }
+</script>
 </html>
