@@ -31,9 +31,4 @@ public class PatientRepository {
         patients.add(patient);
     }
 
-    public void update(PatientEntity patient) {
-        delete(patient.getId());
-
-        patients.add(patient);
-    }
 }

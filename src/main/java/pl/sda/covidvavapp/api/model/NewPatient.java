@@ -18,6 +18,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @BirthDateAndPesel
 public class NewPatient {
+    private Long id;
     @NotNull(message = "First name should not be null")
     private String firstName;
     @NotNull(message = "Last name should not be null")

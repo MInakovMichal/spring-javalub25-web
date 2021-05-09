@@ -2,6 +2,7 @@ package pl.sda.covidvavapp.api.model;
 
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -15,6 +16,7 @@ public class Patient {
     private String firstName;
     private String lastName;
     private String pesel;
+    private LocalDate birthDate;
     private List<Vaccination> doneVacs;
     private List<Vaccination> plannedVacs;
 }

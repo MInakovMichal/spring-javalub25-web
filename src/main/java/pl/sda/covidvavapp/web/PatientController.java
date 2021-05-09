@@ -2,11 +2,7 @@ package pl.sda.covidvavapp.web;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import pl.sda.covidvavapp.api.model.NewPatient;
@@ -35,11 +31,35 @@ public class PatientController {
 
     @PostMapping
     public RedirectView handleAddPatient(@ModelAttribute NewPatient newPatient) {
-        patientService.registerPatient(newPatient);
+        if (newPatient.getId() == null) {
+            patientService.registerPatient(newPatient);
+        } else {
+            patientService.updatePatient(newPatient);
+        }
 
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/patient");
 
         return redirectView;
     }
+
+    @GetMapping("/edit/{patientId}")
+    public ModelAndView displayEditPatientPage(@PathVariable Long patientId) {
+        ModelAndView mav = new ModelAndView("changePatient");
+        mav.addObject("patient", patientService.getPatient(patientId));
+        return mav;
+    }
+
+    @GetMapping("/delete/{patientId}")
+    public RedirectView deletePatient(@PathVariable Long patientId) {
+        ModelAndView mav = new ModelAndView("patients");
+        mav.addObject("patient", patientService.deletePatient(patientId));
+
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("/patient");
+
+        return redirectView;
+    }
+
+
 }

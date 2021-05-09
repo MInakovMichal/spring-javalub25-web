@@ -18,9 +18,10 @@ public class PatientEntity {
     private String pesel;
     private Set<VaccinationEntity> vaccinations = new HashSet<>();
 
-    public PatientEntity updatePatient(String newFirstName, String newLastName) {
+    public PatientEntity updatePatient(String newFirstName, String newLastName, String newPesel) {
         this.firstName = newFirstName;
         this.lastName = newLastName;
+        this.pesel  = newPesel;
         return this;
     }
 

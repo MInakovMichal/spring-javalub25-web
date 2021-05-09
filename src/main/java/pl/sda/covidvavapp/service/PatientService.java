@@ -2,10 +2,7 @@ package pl.sda.covidvavapp.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.sda.covidvavapp.api.model.NewPatient;
-import pl.sda.covidvavapp.api.model.Patient;
-import pl.sda.covidvavapp.api.model.UpdatePatient;
-import pl.sda.covidvavapp.api.model.Vaccination;
+import pl.sda.covidvavapp.api.model.*;
 import pl.sda.covidvavapp.repository.PatientEntity;
 import pl.sda.covidvavapp.repository.PatientRepository;
 import pl.sda.covidvavapp.repository.VaccinationEntity;
@@ -30,9 +27,9 @@ public class PatientService {
         patientRepository.create(entity);
     }
 
-    public void updatePatient(UpdatePatient updatePatient) {
+    public void updatePatient(NewPatient updatePatient) {
         patientRepository.getById(updatePatient.getId())
-                .map(pat -> pat.updatePatient(updatePatient.getFirstName(), updatePatient.getLastName()))
+                .map(pat -> pat.updatePatient(updatePatient.getFirstName(), updatePatient.getLastName(), updatePatient.getPesel()))
                 .orElseThrow(() -> new IllegalStateException("Patient doesn't exist"));
     }
 
@@ -49,8 +46,9 @@ public class PatientService {
                 .collect(Collectors.toList());
     }
 
-    public void deletePatient(Long id) {
+    public Object deletePatient(Long id) {
         patientRepository.delete(id);
+        return null;
     }
 
     private Patient mapToPatient(PatientEntity entity) {

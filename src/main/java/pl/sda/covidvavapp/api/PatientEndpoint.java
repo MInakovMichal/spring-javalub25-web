@@ -50,7 +50,7 @@ public class PatientEndpoint {
     }
 
     @PutMapping
-    public void updatePatient(@RequestBody UpdatePatient patient) {
+    public void updatePatient(@RequestBody NewPatient patient) {
         patientService.updatePatient(patient);
     }
 
