@@ -3,46 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Vaccination</title>
-    <style>
-        table {
-            border-spacing: 0;
-        }
+    <link th:href="@{/style/main.css}" rel="stylesheet">
+    <link rel="stylesheet" href="/webjars/bootstrap/5.0.1/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/5.0.1/js/bootstrap.min.js"></script>
 
-        td {
-            border: 1px solid black;
-            margin: 0;
-            padding: 0;
-        }
-
-        .odd {
-            background-color: green;
-        }
-
-        .even {
-            background-color: greenyellow;
-        }
-
-        .editButton {
-            background-color: white;
-            border: none;
-            padding: 3px;
-        }
-    </style>
 </head>
 <body>
 
 <div th:replace="fragments/utils.html :: navigation"></div>
 
-<table id="myTable">
+<table id="myTable" class="table table-bordered table-dark">
     <thead>
     <tr>
-        <td rowspan="2">Lp.</td>
-        <td>Imię</td>
-        <td>Nazwisko</td>
-        <td>PESEL</td>
-        <td>Data zaplanovanej szczepionki</td>
-        <td>Adresa placówki</td>
-        <td>Typ szczepionki</td>
+        <th rowspan="2" >Lp.</th>
+        <th >Imię</th>
+        <th >Nazwisko</th>
+        <th >PESEL</th>
+        <th >Data zaplanovanej szczepionki</th>
+        <th >Adresa placówki</th>
+        <th >Typ szczepionki</th>
+        <th ></th>
     </tr>
     </thead>
     <tbody>
@@ -53,12 +33,7 @@
 
 </table>
 
-<!--<input type="button" value="Home" onclick="goHome()">-->
 <script>
-    // function goHome() {
-    //     window.location.assign("http://localhost:8080/")
-    // }
-    //
     function editUser(patId) {
         window.location.assign("http://localhost:8080/patient/edit/" + patId)
     }

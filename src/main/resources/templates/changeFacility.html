@@ -3,33 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <title>Vaccination</title>
+    <link th:href="@{/style/main.css}" rel="stylesheet">
+    <link rel="stylesheet" href="/webjars/bootstrap/5.0.1/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/5.0.1/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
 <div th:replace="fragments/utils.html :: navigation"></div>
 
-Zmień placówkę <br>
+<h4>Zmień placówkę</h4>
 
-<form th:action="@{/facility}" th:object="${facility}" method="post">
-    <input type="hidden" th:field="*{id}" th:value="${facility.id}"/>
-    Nazwa : <input th:field="*{name}" th:value="${facility.name}"/><br>
-    Ulica : <input th:field="*{street}" th:value="${facility.street}"/><br>
-    Nr budynku : <input th:field="*{houseNumber}" th:value="${facility.houseNumber}"/><br>
-    Kod pocztowy : <input th:field="*{zipCode}" th:value="${facility.zipCode}"/><br>
-    Miasto : <input th:field="*{city}" th:value="${facility.city}"/><br>
-    Telefon : <input th:field="*{phoneNumber}" th:value="${facility.phoneNumber}"/><br>
+<br>
 
-    <input type="submit" value="Zapisz"/>
-    <input type="reset">
-<!--    <input type="button" value="Home" onclick="goHome()">-->
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-6">-->
+<!--            <form th:action="@{/facility}" th:object="${facility}" method="post">-->
+<!--                <input type="hidden" th:field="*{id}" th:value="${facility.id}"/>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="facilityName">Nazwa</label>-->
+<!--                    <input th:field="*{name}" th:value="${facility.name}"-->
+<!--                           id="facilityName" placeholder="Podaj nazwę" class="form-control" aria-describedby="nameError"/>-->
+<!--                    <small th:if="${#fields.hasErrors('name')}" id="nameError" class="form-text text-danger">-->
+<!--                        <span th:text="${#fields.errors('name')}"></span>-->
+<!--                    </small>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="facilityStreet">Ulica</label>-->
+<!--                    <input th:field="*{street}" th:value="${facility.street}"-->
+<!--                           id="facilityStreet" placeholder="Podaj ulicę" class="form-control" aria-describedby="nameError"/>-->
+<!--                    <small th:if="${#fields.hasErrors('street')}" id="streetError" class="form-text text-danger">-->
+<!--                        <span th:text="${#fields.errors('street')}"></span>-->
+<!--                    </small>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="facilityNumber">Numer budynku</label>-->
+<!--                    <input th:field="*{houseNumber}" th:value="${facility.houseNumber}"-->
+<!--                           id="facilityNumber" placeholder="Podaj numer budynku" class="form-control" aria-describedby="houseError"/>-->
+<!--                    <small th:if="${#fields.hasErrors('houseNumber')}" id="houseError" class="form-text text-danger">-->
+<!--                        <span th:text="${#fields.errors('houseNumber')}"></span>-->
+<!--                    </small>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="facilityZipCode">Kod pocztowy</label>-->
+<!--                    <input th:field="*{zipCode}" th:value="${facility.zipCode}"-->
+<!--                           id="facilityZipCode" placeholder="Podaj kod pocztowy" class="form-control" aria-describedby="zipCodeError"/>-->
+<!--                    <small th:if="${#fields.hasErrors('zipCode')}" id="zipCodeError" class="form-text text-danger">-->
+<!--                        <span th:text="${#fields.errors('zipCode')}"></span>-->
+<!--                    </small>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="facilityCity">Miasto</label>-->
+<!--                    <input th:field="*{city}" th:value="${facility.city}"-->
+<!--                           id="facilityCity" placeholder="Podaj miasto" class="form-control" aria-describedby="cityError"/>-->
+<!--                    <small th:if="${#fields.hasErrors('city')}" id="cityError" class="form-text text-danger">-->
+<!--                        <span th:text="${#fields.errors('city')}"></span>-->
+<!--                    </small>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="facilityPhone">Numer telefonu</label>-->
+<!--                    <input th:field="*{phoneNumber}" th:value="${facility.phoneNumber}"-->
+<!--                           id="facilityPhone" placeholder="Podaj numer tel" class="form-control" aria-describedby="phoneError"/>-->
+<!--                    <small th:if="${#fields.hasErrors('phoneNumber')}" id="phoneError" class="form-text text-danger">-->
+<!--                        <span th:text="${#fields.errors('phoneNumber')}"></span>-->
+<!--                    </small>-->
+<!--                </div>-->
+<!--                <input type="submit" value="Zapisz" class="btn btn-primary" style="float: right; margin-top: 2px"/>-->
+<!--                <input type="reset" class="btn btn-primary" style="float: right; margin-top: 2px;  margin-right: 2px"/>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<div class="container">
+    <form th:action="@{/facility}" th:object="${facility}" method="post">
+        <input type="hidden" th:field="*{id}" th:value="${facility.id}"/>
 
-</form>
+        <div class="row">
+            <div class="col-2">
+                Nazwa :
+            </div>
+            <div class="col-4">
+                <input th:field="*{name}" th:value="${facility.name}"/>
+            </div>
+        </div>
 
-<!--<script>-->
-<!--    function goHome() {-->
-<!--        window.location.assign("http://localhost:8080/")-->
-<!--    }-->
-<!--</script>-->
+        <br>
+
+        <div class="row">
+            <div class="col-2">
+                Ulica :
+            </div>
+            <div class="col-4">
+                <input th:field="*{street}" th:value="${facility.street}"/>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-2">
+                Numer budynku :
+            </div>
+            <div class="col-4">
+                <input th:field="*{houseNumber}" th:value="${facility.houseNumber}"/>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-2">
+                Kod pocztowy :
+            </div>
+            <div class="col-4">
+                <input th:field="*{zipCode}" th:value="${facility.zipCode}"/>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-2">
+                Miasto :
+            </div>
+            <div class="col-4">
+                <input th:field="*{city}" th:value="${facility.city}"/>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-2">
+                Numer telefonu :
+            </div>
+            <div class="col-4">
+                <input th:field="*{phoneNumber}" th:value="${facility.phoneNumber}"/>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="container">
+            <div class="row">
+                <div class="offset-3">
+                    <input type="submit" value="Zapisz" class="btn btn-primary">
+                    <input type="reset" class="btn btn-primary"/>
+                </div>
+            </div>
+
+            <span class="text-danger" th:if="${#fields.hasErrors('name')}"
+                  th:text="${#fields.errors('name')}"></span><br>
+            <span class="text-danger" th:if="${#fields.hasErrors('street')}"
+                  th:text="${#fields.errors('street')}"></span><br>
+            <span class="text-danger" th:if="${#fields.hasErrors('houseNumber')}"
+                  th:text="${#fields.errors('houseNumber')}"></span><br>
+            <span class="text-danger" th:if="${#fields.hasErrors('zipCode')}"
+                  th:text="${#fields.errors('zipCode')}"></span><br>
+            <span class="text-danger" th:if="${#fields.hasErrors('city')}"
+                  th:text="${#fields.errors('city')}"></span><br>
+            <span class="text-danger" th:if="${#fields.hasErrors('phoneNumber')}"
+                  th:text="${#fields.errors('phoneNumber')}"></span><br>
+
+            <span class="text-danger" th:if="${#fields.hasGlobalErrors()}"
+                  th:text="${#fields.globalErrors()}"></span><br>
+
+
+        </div>
+    </form>
+</div>
 
 <div th:replace="fragments/utils.html :: footer"></div>
 </body>

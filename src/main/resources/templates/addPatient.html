@@ -3,30 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <title>Vaccination</title>
+    <link th:href="@{/style/main.css}" rel="stylesheet">
+    <link rel="stylesheet" href="/webjars/bootstrap/5.0.1/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/5.0.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-    <div th:replace="fragments/utils.html :: navigation"></div>
+<div th:replace="fragments/utils.html :: navigation"></div>
 
-    Dodaj pacjenta <br>
+<h4>Dodaj pacjenta</h4>
 
+<br>
+
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-6">-->
+<!--            <form th:action="@{/patient}" th:object="${newPatient}" method="post">-->
+<!--                <input type="hidden" th:field="*{id}"/>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="patientFirstName">Imię</label>-->
+<!--                    <input th:field="*{firstName}"-->
+<!--                           id="patientFirstName" placeholder="Podaj imię" class="form-control"-->
+<!--                           aria-describedby="firstNameError"/>-->
+<!--                    <small th:if="${#fields.hasErrors('firstName')}" id="firstNameError" class="form-text text-danger">-->
+<!--                        <span th:text="${#fields.errors('firstName')}"></span>-->
+<!--                    </small>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="patientLastName">Nazwisko</label>-->
+<!--                    <input th:field="*{lastName}"-->
+<!--                           id="patientLastName" placeholder="Podaj nazwisko" class="form-control"-->
+<!--                           aria-describedby="lastNameError"/>-->
+<!--                    <small th:if="${#fields.hasErrors('lastName')}" id="lastNameError" class="form-text text-danger">-->
+<!--                        <span th:text="${#fields.errors('lastName')}"></span>-->
+<!--                    </small>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="birthDate">Data urodzenia</label>-->
+<!--                    <input type="date" th:field="*{birthDate}"-->
+<!--                           id="birthDate" placeholder="Podaj datę urodzenia" class="form-control"-->
+<!--                           aria-describedby="birthDateError"/>-->
+<!--                    <small th:if="${#fields.hasErrors('birthDate')}" id="birthDateError" class="form-text text-danger">-->
+<!--                        <span th:text="${#fields.errors('birthDate')}"></span>-->
+<!--                    </small>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="pesel">Pesel</label>-->
+<!--                    <input th:field="*{pesel}"-->
+<!--                           id="pesel" placeholder="Podaj pesel" class="form-control" aria-describedby="peselError"/>-->
+<!--                    <small th:if="${#fields.hasErrors('pesel')}" id="peselError" class="form-text text-danger">-->
+<!--                        <span th:text="${#fields.errors('pesel')}"></span>-->
+<!--                    </small>-->
+<!--                </div>-->
+<!--                <input type="submit" value="Zapisz" class="btn btn-primary" style="float: right; margin-top: 2px"/>-->
+<!--                <input type="reset" class="btn btn-primary" style="float: right; margin-top: 2px; margin-right: 2px"/>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<div class="container">
     <form th:action="@{/patient}" th:object="${newPatient}" method="post">
-        Imię : <input th:field="*{firstName}"/><br>
-        Nazwisko : <input th:field="*{lastName}"/><br>
-        Data urodzenia : <input type="date" th:field="*{birthDate}"/><br>
-        PESEL : <input th:field="*{pesel}"/><br>
+        <div class="row">
+            <div class="col-2">
+                Imię :
+            </div>
+            <div class="col-4">
+                <input th:field="*{firstName}"/>
+            </div>
+        </div>
 
-        <input type="submit" value="Zapisz"/>
-        <input type="reset">
-<!--        <input type="button" value="Home" onclick="goHome()">-->
+        <br>
+
+        <div class="row">
+            <div class="col-2">
+                Nazwisko :
+            </div>
+            <div class="col-4">
+                <input th:field="*{lastName}"/>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-2">
+                Data urodzenia :
+            </div>
+            <div class="col-4">
+                <input type="date" th:field="*{birthDate}"/>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-2">
+                PESEL :
+            </div>
+            <div class="col-4">
+                <input th:field="*{pesel}"/>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="container">
+            <div class="row">
+                <div class="offset-3">
+                    <input type="submit" value="Zapisz" class="btn btn-primary">
+                    <input type="reset" class="btn btn-primary"/>
+                </div>
+            </div>
+
+            <span class="text-danger" th:if="${#fields.hasErrors('firstName')}"
+                  th:text="${#fields.errors('firstName')}"></span><br>
+            <span class="text-danger" th:if="${#fields.hasErrors('lastName')}"
+                  th:text="${#fields.errors('lastName')}"></span><br>
+            <span class="text-danger" th:if="${#fields.hasErrors('birthDate')}"
+                  th:text="${#fields.errors('birthDate')}"></span><br>
+            <span class="text-danger" th:if="${#fields.hasErrors('pesel')}" th:text="${#fields.errors('pesel')}"></span><br>
+
+            <span class="text-danger" th:if="${#fields.hasGlobalErrors()}"
+                  th:text="${#fields.globalErrors()}"></span><br>
+        </div>
     </form>
-
-<!--    <script>-->
-<!--        function goHome() {-->
-<!--            window.location.assign("http://localhost:8080/")-->
-<!--        }-->
-<!--    </script>-->
-
-    <div th:replace="fragments/utils.html :: footer"></div>
+</div>
+<div th:replace="fragments/utils.html :: footer"></div>
 </body>
 </html>

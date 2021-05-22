@@ -1,0 +1,4 @@
+zapytanie1
+zapytanie2
+zapytanie3
+zapytanie4
