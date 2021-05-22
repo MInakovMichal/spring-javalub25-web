@@ -5,27 +5,32 @@
     <title>Vaccination</title>
 </head>
 <body>
-    Zmień placówkę <br>
 
-    <form th:action="@{/facility}" th:object="${facility}" method="post">
-        <input type="hidden" th:field="*{id}" th:value="${facility.id}"/>
-        Nazwa : <input th:field="*{name}" th:value="${facility.name}"/><br>
-        Ulica : <input th:field="*{street}" th:value="${facility.street}"/><br>
-        Nr budynku : <input th:field="*{houseNumber}" th:value="${facility.houseNumber}"/><br>
-        Kod pocztowy : <input th:field="*{zipCode}" th:value="${facility.zipCode}"/><br>
-        Miasto : <input th:field="*{city}" th:value="${facility.city}"/><br>
-        Telefon : <input th:field="*{phoneNumber}" th:value="${facility.phoneNumber}"/><br>
+<div th:replace="fragments/utils.html :: navigation"></div>
 
-        <input type="submit" value="Zapisz"/>
-        <input type="reset">
-        <input type="button" value="Home" onclick="goHome()">
+Zmień placówkę <br>
 
-    </form>
+<form th:action="@{/facility}" th:object="${facility}" method="post">
+    <input type="hidden" th:field="*{id}" th:value="${facility.id}"/>
+    Nazwa : <input th:field="*{name}" th:value="${facility.name}"/><br>
+    Ulica : <input th:field="*{street}" th:value="${facility.street}"/><br>
+    Nr budynku : <input th:field="*{houseNumber}" th:value="${facility.houseNumber}"/><br>
+    Kod pocztowy : <input th:field="*{zipCode}" th:value="${facility.zipCode}"/><br>
+    Miasto : <input th:field="*{city}" th:value="${facility.city}"/><br>
+    Telefon : <input th:field="*{phoneNumber}" th:value="${facility.phoneNumber}"/><br>
 
-    <script>
-        function goHome() {
-            window.location.assign("http://localhost:8080/")
-        }
-    </script>
+    <input type="submit" value="Zapisz"/>
+    <input type="reset">
+<!--    <input type="button" value="Home" onclick="goHome()">-->
+
+</form>
+
+<!--<script>-->
+<!--    function goHome() {-->
+<!--        window.location.assign("http://localhost:8080/")-->
+<!--    }-->
+<!--</script>-->
+
+<div th:replace="fragments/utils.html :: footer"></div>
 </body>
 </html>

@@ -54,9 +54,15 @@ public class PatientEndpoint {
         patientService.updatePatient(patient);
     }
 
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletePatient(@PathVariable Long id) {
-        patientService.deletePatient(id);
-    }
+//    @DeleteMapping("/{id}")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void deletePatient(@PathVariable Long id) {
+//        patientService.deletePatient(id);
+//    }
+
+//    @DeleteMapping("/{id}")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void deleteVaccination(@PathVariable Long id) {
+//        patientService.deleteVaccination(id);
+//    }
 }

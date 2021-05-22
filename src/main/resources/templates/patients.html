@@ -30,6 +30,9 @@
     </style>
 </head>
 <body>
+
+<div th:replace="fragments/utils.html :: navigation"></div>
+
 <table id="myTable">
     <thead>
     <tr>
@@ -37,58 +40,25 @@
         <td>Imię</td>
         <td>Nazwisko</td>
         <td>PESEL</td>
-        <td>Data urodzenia</td>
         <td>Data zaplanovanej szczepionki</td>
         <td>Adresa placówki</td>
         <td>Typ szczepionki</td>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="patient, iterator : ${patients}" th:class="${iterator.odd ? 'odd' : 'even'}">
-        <td><span th:text="${patient.id}"></span></td>
-        <td><span th:text="${patient.firstName}"></span></td>
-        <td><span th:text="${patient.lastName}"></span></td>
-        <td><span th:text="${patient.pesel}"></span></td>
-        <td><span th:text="${patient.birthDate}"></span></td>
-        <td th:if="${patient.plannedVacs.size() > 0}" style="text-align: center">
-            <table>
-                <tr th:each="plannedVac : ${patient.plannedVacs}">
-                    <td><span th:text="${plannedVac.date}"></span></td>
-                </tr>
-            </table>
-        </td>
-        <td th:if="${patient.plannedVacs.size() > 0}" style="text-align: center">
-            <table>
-                <tr th:each="plannedVac : ${patient.plannedVacs}">
-                    <td><span th:text="${plannedVac.address}"></span></td>
-                </tr>
-            </table>
-        </td>
-        <td th:if="${patient.plannedVacs.size() > 0}" style="text-align: right">
-            <table>
-                <tr th:each="plannedVac : ${patient.plannedVacs}">
-                    <td><span th:text="${plannedVac.vacType}"></span></td>
-                </tr>
-            </table>
-        </td>
-        <td th:unless="${patient.plannedVacs.size() > 0}" colspan="4">
-            Brak zaplanowanych szczepień
-        </td>
-        <td class="editButton">
-            <input type="button" value="Edit" th:onclick="'editUser('+${patient.id}+')'">
-            <input type="button" value="Delete" th:onclick="'deleteUser('+${patient.id}+')'">
-        </td>
+    <tr th:each="patient, iterator : ${patients}" th:class="${iterator.odd ? 'odd' : 'even'}"
+        th:include="fragments/patientsTable.html :: patientRow(patient, iterator)">
     </tr>
     </tbody>
 
 </table>
 
-<input type="button" value="Home" onclick="goHome()">
+<!--<input type="button" value="Home" onclick="goHome()">-->
 <script>
-    function goHome() {
-        window.location.assign("http://localhost:8080/")
-    }
-
+    // function goHome() {
+    //     window.location.assign("http://localhost:8080/")
+    // }
+    //
     function editUser(patId) {
         window.location.assign("http://localhost:8080/patient/edit/" + patId)
     }
@@ -102,7 +72,26 @@
         }
     }
 
+    function deleteVaccination(userId) {
+        let r = confirm("Usunąć szczepienie?");
+        if (r === true) {
+            window.location.assign("http://localhost:8080/patient/deleteVaccination/" + userId)
+        } else {
+            alert("Szczepienie nie było usunięty")
+        }
+    }
+
+    function addVaccination(userId) {
+        let r = confirm("Dodać szczepienie?");
+        if (r === true) {
+            window.location.assign("http://localhost:8080/vaccination/")
+        } else {
+            alert("Szczepienie nie było dodane")
+        }
+    }
+
 </script>
 
+<div th:replace="fragments/utils.html :: footer"></div>
 </body>
 </html>

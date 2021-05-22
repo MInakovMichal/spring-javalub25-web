@@ -5,26 +5,29 @@
     <title>Vaccination</title>
 </head>
 <body>
-    Zmień pacjenta <br>
 
-    <form th:action="@{/patient}" th:object="${patient}" method="post">
-        <input type="hidden" th:field="*{id}" th:value="${patient.id}"/>
-        Imię : <input th:field="*{firstName}" th:value="${patient.firstName}"/><br>
-        Nazwisko : <input th:field="*{lastName}" th:value="${patient.lastName}"/><br>
-        Data urodzenia : <input type="date" th:field="*{birthDate}" th:value="${patient.birthDate}"/><br>
-        PESEL : <input th:field="*{pesel}" th:value="${patient.pesel}"/><br>
+<div th:replace="fragments/utils.html :: navigation"></div>
 
-        <input type="submit" value="Zapisz"/>
-        <input type="reset">
-        <input type="button" value="Home" onclick="goHome()">
-    </form>
+Zmień pacjenta <br>
 
-    <script>
-        function goHome() {
-            window.location.assign("http://localhost:8080/")
-        }
-    </script>
+<form th:action="@{/patient}" th:object="${patient}" method="post">
+    <input type="hidden" th:field="*{id}" th:value="${patient.id}"/>
+    Imię : <input th:field="*{firstName}" th:value="${patient.firstName}"/><br>
+    Nazwisko : <input th:field="*{lastName}" th:value="${patient.lastName}"/><br>
+    Data urodzenia : <input type="date" th:field="*{birthDate}" th:value="${patient.birthDate}"/><br>
+    PESEL : <input th:field="*{pesel}" th:value="${patient.pesel}"/><br>
 
+    <input type="submit" value="Zapisz"/>
+    <input type="reset">
+<!--    <input type="button" value="Home" onclick="goHome()">-->
+</form>
 
+<!--<script>-->
+<!--    function goHome() {-->
+<!--        window.location.assign("http://localhost:8080/")-->
+<!--    }-->
+<!--</script>-->
+
+<div th:replace="fragments/utils.html :: footer"></div>
 </body>
 </html>

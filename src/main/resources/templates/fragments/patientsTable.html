@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<div th:fragment="patientRow(patient, iterator)">
+  <td><span th:text="${iterator.count}"></span></td>
+  <td><span th:text="${patient.firstName}"></span></td>
+  <td><span th:text="${patient.lastName}"></span></td>
+  <td><span th:text="${patient.pesel}"></span></td>
+  <!--        <td><span th:text="${patient.birthDate}"></span></td>-->
+  <td th:if="${patient.plannedVacs.size() > 0}" style="text-align: center">
+    <table>
+      <tr th:each="plannedVac : ${patient.plannedVacs}">
+        <td><span th:text="${plannedVac.date}"></span></td>
+      </tr>
+    </table>
+  </td>
+  <td th:if="${patient.plannedVacs.size() > 0}" style="text-align: center">
+    <table>
+      <tr th:each="plannedVac : ${patient.plannedVacs}">
+        <td><span th:text="${plannedVac.address}"></span></td>
+      </tr>
+    </table>
+  </td>
+  <td th:if="${patient.plannedVacs.size() > 0}" style="text-align: right">
+    <table>
+      <tr th:each="plannedVac : ${patient.plannedVacs}" cellspacing="0" cellpadding="0">
+        <td><span th:text="${plannedVac.vacType}"></span></td>
+      </tr>
+    </table>
+  </td>
+  <td th:unless="${patient.plannedVacs.size() > 0}" colspan="3">
+    Brak zaplanowanych szczepień
+  </td>
+  <td class="editButton">
+    <input type="button" value="Edit" th:onclick="'editUser('+${patient.id}+')'">
+    <input type="button" value="Delete" th:onclick="'deleteUser('+${patient.id}+')'">
+    <input type="button" value="Delete vaccination" th:if="${patient.plannedVacs.size() > 0}"
+           th:onclick="'deleteVaccination('+${patient.id}+')'">
+    <input type="button" value="Add vaccination" th:if="${patient.plannedVacs.size() <= 0}"
+           th:onclick="'addVaccination('+${patient.id}+')'">
+  </td>
+</div>
+</body>
+</html>

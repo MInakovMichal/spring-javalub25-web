@@ -5,6 +5,9 @@
     <title>Vaccination</title>
 </head>
 <body>
+
+    <div th:replace="fragments/utils.html :: navigation"></div>
+
     Dodaj pacjenta <br>
 
     <form th:action="@{/patient}" th:object="${newPatient}" method="post">
@@ -15,15 +18,15 @@
 
         <input type="submit" value="Zapisz"/>
         <input type="reset">
-        <input type="button" value="Home" onclick="goHome()">
+<!--        <input type="button" value="Home" onclick="goHome()">-->
     </form>
 
-    <script>
-        function goHome() {
-            window.location.assign("http://localhost:8080/")
-        }
-    </script>
+<!--    <script>-->
+<!--        function goHome() {-->
+<!--            window.location.assign("http://localhost:8080/")-->
+<!--        }-->
+<!--    </script>-->
 
-
+    <div th:replace="fragments/utils.html :: footer"></div>
 </body>
 </html>

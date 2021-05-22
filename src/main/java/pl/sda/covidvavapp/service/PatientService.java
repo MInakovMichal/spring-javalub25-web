@@ -50,6 +50,10 @@ public class PatientService {
         patientRepository.delete(id);
         return null;
     }
+    public Object deleteVaccination(Long id) {
+        patientRepository.deleteVaccination(id);
+        return null;
+    }
 
     private Patient mapToPatient(PatientEntity entity) {
         return Patient.builder()

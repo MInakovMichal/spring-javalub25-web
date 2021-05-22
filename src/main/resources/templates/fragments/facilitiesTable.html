@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div th:fragment="facilityRow(facility, iterator)">
+    <td><span th:text="${iterator.count}"></span></td>
+    <td><span th:text="${facility.name}"></span></td>
+    <td><span th:text="${facility.street} + ' ' + ${facility.houseNumber} + ' ' + ${facility.zipCode} + ' ' +
+    ${facility.city}"></span></td>
+    <td><span th:text=" ${facility.phoneNumber}"></span></td>
+    </td>
+    <td class="editButton">
+        <input type="button" value="Edit" th:onclick="'editFacility('+${iterator.count}+')'">
+        <input type="button" value="Delete" th:onclick="'deleteFacility('+${iterator.count}+')'">
+    </td>
+
+</div>
+</body>
+</html>

@@ -40,7 +40,7 @@ public class VaccinationController {
     @PostMapping
     public String handleAddVaccination(@ModelAttribute NewVaccination newVaccination) {
         vaccinationService.planVaccination(newVaccination);
-        return "main";
+        return "redirect:/patient";
     }
 
     private List<Dictionary> prepareFacilities() {

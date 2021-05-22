@@ -61,5 +61,16 @@ public class PatientController {
         return redirectView;
     }
 
+    @GetMapping("/deleteVaccination/{patientId}")
+    public RedirectView deleteVaccination(@PathVariable Long patientId) {
+        ModelAndView mav = new ModelAndView("patients");
+        mav.addObject("patient", patientService.deleteVaccination(patientId));
+
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("/patient");
+
+        return redirectView;
+    }
+
 
 }

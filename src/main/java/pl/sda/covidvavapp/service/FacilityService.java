@@ -38,8 +38,9 @@ public class FacilityService {
         });
     }
 
-    public void remove(Long id) {
+    public Object remove(Long id) {
         facilityRepository.remove(id);
+        return null;
     }
 
     public List<Facility> getAll() {

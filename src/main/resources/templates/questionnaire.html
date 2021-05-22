@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Questionnaire</title>
+    <style>
+        table {
+            border-spacing: 0;
+        }
+
+        td {
+            border: 1px solid black;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+</head>
+<body>
+
+<div th:replace="fragments/utils.html :: navigation"></div>
+
+  <table id = "myTable">
+      <thead>
+        <tr>
+            <td rowspan="2">Lp.</td>
+            <td>Zapytanie</td>
+            <td>Odpowiedz</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="question : ${questionnaire}">
+            <td><span th:text="${question.id}"></span></td>
+            <td><span th:text="${question.question}"></span></td>
+            <td><span th:text="${question.answer}"></span></td>
+        </tr>
+      </tbody>
+
+  </table>
+
+<div th:replace="fragments/utils.html :: footer"></div>
+</body>
+</html>

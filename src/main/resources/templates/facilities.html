@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Facilities</title>
+    <style>
+        table {
+            border-spacing: 0;
+        }
+
+        td {
+            border: 1px solid black;
+            margin: 0;
+            padding: 0;
+        }
+
+        .odd {
+            background-color: green;
+        }
+
+        .even {
+            background-color: greenyellow;
+        }
+
+        .editButton {
+            background-color: white;
+            border: none;
+            padding: 3px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div th:replace="fragments/utils.html :: navigation"></div>
+
+<table id="myTable">
+    <thead>
+    <tr>
+        <td rowspan="2">Lp.</td>
+        <td>Nazwa</td>
+        <td>Adres</td>
+        <td>Telefon</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="facility, iterator : ${facilities}" th:class="${iterator.odd ? 'odd' : 'even'}"
+        th:include="fragments/facilitiesTable.html :: facilityRow(facility, iterator)">
+    </tr>
+    </tbody>
+
+</table>
+
+<script>
+    function editFacility(facilityId) {
+        window.location.assign("http://localhost:8080/facility/edit/" + facilityId)
+    }
+
+    function deleteFacility(facilityId) {
+        let r = confirm("Usunąć placówkę?");
+        if (r === true) {
+            window.location.assign("http://localhost:8080/facility/delete/" + facilityId)
+        } else {
+            alert("Placówka nie była usunięta")
+        }
+    }
+
+</script>
+
+<div th:replace="fragments/utils.html :: footer"></div>
+
+</body>
+</html>
